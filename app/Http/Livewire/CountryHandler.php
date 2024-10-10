@@ -2,15 +2,27 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\Country;
+use Exception;
+use Illuminate\Http\Client\Request;
 use Livewire\Component;
 
 class CountryHandler extends Component
 {
     public $country = [
-        'name',
+        'name' => '',
         'is_active' => true,
     ];
     public $countryId;
+
+    public $rules = [
+        'country.name' => 'required',
+    ];
+
+    public $messages = [
+        'country.name' => 'This field is required',
+    ];
+
 
     public function resetFields()
     {
@@ -19,12 +31,59 @@ class CountryHandler extends Component
 
     public function create()
     {
-        dd($this->country);
+        $this->validate();
+
+        $countryExists = Country::where('name', $this->country['name'])->exists();
+        if ($countryExists) {
+            session()->flash('error', 'Country already exists');
+            return;
+        }
+
+        try {
+            $country = Country::create($this->country);
+            if ($country) {
+                session()->flash('success', 'Country created successfully');
+                return redirect()->route('country');
+            }
+        } catch (Exception $e) {
+            session()->flash('error', $e->getMessage());
+            return redirect()->route('country');
+        }
     }
 
-    public function update($id)
+    public function update()
     {
-        dd($this->country);
+        $this->validate();
+        $countryExists = Country::where('name', $this->country['name'])
+            ->where('id', '!=', $this->countryId)->exists();
+        if ($countryExists) {
+            session()->flash('error', 'Country already exists');
+            return;
+        }
+
+        try {
+            $country = Country::find($this->countryId);
+            if ($country) {
+                $country->update($this->country);
+                session()->flash('success', 'Country updated successfully');
+                return redirect()->route('country');
+            }
+        } catch (Exception $e) {
+            session()->flash('error', $e->getMessage());
+            return redirect()->route('country');
+        }
+    }
+
+    public function mount($countryId)
+    {
+        if ($countryId) {
+            $country = Country::find($countryId);
+            if ($country) {
+                $this->country = $country->toArray();
+            } else {
+                return redirect()->back()->with('warning', 'Country  not found');
+            }
+        }
     }
 
     public function render()

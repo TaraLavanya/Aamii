@@ -20,14 +20,14 @@
                                         <th>#</th>
                                         <th>Name</th>
                                         <th>Is Active</th>
-                                        <th colspan="2" class="w-1"></th>
+                                        <th colspan="2" class="w-1">Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @if (isset($countries) && count($countries) > 0)
                                         @foreach ($countries as $countryIndex => $country)
                                             <tr wire:key='item-{{ $country->id }}'>
-                                               
+
                                                 <td>
                                                     {{ $countryIndex + $countries->firstItem() }}
                                                 </td>
@@ -51,42 +51,13 @@
                                                     <div class="d-flex align-items-center gap-2">
                                                         <a
                                                             href="{{ route('country', ['countryId' => $country->id, 'page' => $this->paginators['page'], 'pp' => $this->perPage]) }}">
-                                                            <svg xmlns="http://www.w3.org/2000/svg"
-                                                                class="icon icon-tabler icon-tabler-edit" width="24"
-                                                                height="24" viewBox="0 0 24 24" stroke-width="2"
-                                                                stroke="currentColor" fill="none"
-                                                                stroke-linecap="round" stroke-linejoin="round">
-                                                                <path stroke="none" d="M0 0h24v24H0z" fill="none">
-                                                                </path>
-                                                                <path
-                                                                    d="M7 7h-1a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-1">
-                                                                </path>
-                                                                <path
-                                                                    d="M20.385 6.585a2.1 2.1 0 0 0 -2.97 -2.97l-8.415 8.385v3h3l8.385 -8.415z">
-                                                                </path>
-                                                                <path d="M16 5l3 3"></path>
-                                                            </svg>
+                                                            @include('icons.edit')
                                                         </a>
 
                                                         <a href="#"
                                                             wire:click.prevent="$dispatch('canDeletecountry',{{ $country->id }})"
                                                             class="text-danger">
-                                                            <svg xmlns="http://www.w3.org/2000/svg"
-                                                                class="icon icon-tabler icon-tabler-trash"
-                                                                width="24" height="24" viewBox="0 0 24 24"
-                                                                stroke-width="2" stroke="currentColor" fill="none"
-                                                                stroke-linecap="round" stroke-linejoin="round">
-                                                                <path stroke="none" d="M0 0h24v24H0z" fill="none">
-                                                                </path>
-                                                                <path d="M4 7l16 0"></path>
-                                                                <path d="M10 11l0 6"></path>
-                                                                <path d="M14 11l0 6"></path>
-                                                                <path
-                                                                    d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12">
-                                                                </path>
-                                                                <path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3">
-                                                                </path>
-                                                            </svg>
+                                                            @include('icons.trash')
                                                         </a>
                                                     </div>
                                                 </td>
@@ -104,22 +75,21 @@
                             </table>
                         </div>
                         <div class="card-footer">
-                            <div class="row d-flex flex-row mb-3">
+                            <div class="d-flex flex-row mb-3">
                                 @if (isset($countries) && count($countries) != 0)
-                                    <div class="col">
-                                        <div class="d-flex flex-row mb-3">
-                                            <div>
-                                                <label class="p-2" for="perPage">Per Page</label>
-                                            </div>
-                                            <div>
-                                                <select class="form-select" id="perPage" name="perPage"
-                                                    wire:model="perPage"
-                                                    wire:change="changePageValue($event.target.value)">
-                                                    <option value=10>10</option>
-                                                    <option value=50>50</option>
-                                                    <option value=100>100</option>
-                                                </select>
-                                            </div>
+                                    <div>
+                                        <div>
+                                            <label class="p-2" for="perPage">Per Page</label>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div>
+                                            <select class="form-select" id="perPage" name="perPage"
+                                                wire:model="perPage" wire:change="changePageValue($event.target.value)">
+                                                <option value=10>10</option>
+                                                <option value=50>50</option>
+                                                <option value=100>100</option>
+                                            </select>
                                         </div>
                                     </div>
                                 @endif
