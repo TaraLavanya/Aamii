@@ -2,24 +2,16 @@
 
 
 use App\Http\Controllers\Auth\LoginController;
-use App\Http\Livewire\AnnouncementHandler;
-use App\Http\Livewire\AnnouncementSummary;
-use App\Http\Livewire\CategorySummary;
 use App\Http\Livewire\CitySummary;
 use App\Http\Livewire\CountrySummary;
 use App\Http\Livewire\Dashboard\Admin;
-use App\Http\Livewire\ProductSummary;
 use App\Http\Livewire\Profile\UserProfileSettings;
 use App\Http\Livewire\Settings\Employee\EmployeeSummary;
 use App\Http\Livewire\StateSummary;
 use App\Models\User;
 use Illuminate\Support\Facades\Artisan;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Route;
-
-
-
 
 /*
 |--------------------------------------------------------------------------
@@ -68,7 +60,6 @@ Route::get('migrate-tables', function () {
     Artisan::call('migrate', ['--force' => true]);
     return "Tables migrated";
 });
-
 
 Route::get('/set-default-password', function () {
     User::where('id', '>', 0)->update([

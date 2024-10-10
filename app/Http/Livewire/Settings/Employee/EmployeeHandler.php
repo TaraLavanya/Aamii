@@ -12,24 +12,21 @@ class EmployeeHandler extends Component
     public $departments;
 
     public $employee = [
+        'user_id' => '',
         'name' => '',
         'email' => '',
-        'mobile_number' => '',
         'is_active' => 1,
     ];
 
     protected $rules = [
-        'employee.emp_no' => 'required|string',
+        'employee.user_id' => 'required|string',
         'employee.name' => 'required|string',
-        'employee.mobile_number' => 'required|digits:10',
         'employee.email' => 'required|string|email',
     ];
 
     protected $messages = [
-        'employee.emp_no.required' => 'The employee number filed is required.',
+        'employee.user_id.required' => 'The employee number filed is required.',
         'employee.name.required' => 'The employee name field is required.',
-        'employee.mobile_number.required' => 'The phone.no name field is required.',
-        'employee.mobile_number.digits' => 'Please give the valid phone no',
         'employee.email.required' => 'The email address field is required.',
     ];
 
@@ -57,18 +54,10 @@ class EmployeeHandler extends Component
             return;
         }
 
-        $employeePhoneNoExists = User::where('mobile_number', $this->employee['mobile_number'])->first();
-
-        if ($employeePhoneNoExists) {
-            $this->addError('employee.mobile_number', 'Employee phone number already exists.');
-            return;
-        }
-
         $authorId = auth()->user()->id;
         $this->employee['created_by'] = $authorId;
         $this->employee['updated_by'] = $authorId;
 
-        $this->employee['department_id'] = 0;
 
         try {
             $this->employee['password'] = Hash::make(config('app.default_user_password'));

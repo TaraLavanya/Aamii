@@ -28,12 +28,11 @@ class User extends Authenticatable implements AuthenticatableContract
         'name',
         'email',
         'password',
-        'mobile_number',
-        'department_id',
         'is_active',
-        'Level',
-        'type',
-        'emp_no',
+        'user_id',
+        'profile_photo_path',
+        'created_by',
+        'updated_by',
     ];
 
     /**
@@ -62,20 +61,4 @@ class User extends Authenticatable implements AuthenticatableContract
      *
      * @var array<int, string>
      */
-    protected $appends = [
-        'profile_photo_url',
-    ];
-
-    public function department()
-    {
-        return $this->belongsTo(Category::class, 'department_id')->where('type', 'department');
-    }
-
-    public function eventExhibitors(){
-        return $this->hasMany(EventExhibitor::class,'sales_person_id');
-    }
-
-    public function exhibitors(){
-        return $this->hasMany(Exhibitor::class,'sales_person_id');
-    }
 }

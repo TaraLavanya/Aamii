@@ -7,7 +7,7 @@
 
             <div class="row">
                 <div class="col-lg-4">
-                    @livewire('settings.employee.employee-handler', ['employeeId' => $employeeId])
+                    @livewire('settings.employee.employee-handler', ['employeeId' => $employeeId ?? null])
                 </div>
 
                 <div class="col-lg-8">
@@ -19,9 +19,9 @@
                                 <thead>
                                     <tr>
                                         <th>#</th>
+                                        <th>User Id</th>
                                         <th>Name</th>
-                                        <th>Emp.No.</th>
-                                        <th>Phone.No</th>
+                                        <th>E-mail</th>
                                         <th class="w-1"></th>
                                     </tr>
                                 </thead>
@@ -31,6 +31,10 @@
                                             <tr>
                                                 <td>
                                                     {{ $employeeIndex + $employees->firstItem() }}
+                                                </td>
+
+                                                <td>
+                                                    <div class="text-capitalize">{{ $employee->user_id }}</div>
                                                 </td>
                                                 <td>
                                                     <div class="d-flex align-items-center">
@@ -45,10 +49,7 @@
                                                     </div>
                                                 </td>
                                                 <td>
-                                                    <div class="text-capitalize">{{ $employee->emp_no }}</div>
-                                                </td>
-                                                <td>
-                                                    <div class="text-capitalize">{{ $employee->mobile_number }}</div>
+                                                    <div class="text-capitalize">{{ $employee->email }}</div>
                                                 </td>
 
                                                 <td>
