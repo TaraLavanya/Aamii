@@ -22,23 +22,8 @@
 
                             <div class="col-md-12">
                                 <div class="mb-3">
-                                    <label class="form-label required" for="name">State</label>
-                                    <select class="form-select" wire:model="city.state_id" id="state_id">
-                                        <option value="">Select Country</option>
-                                        @foreach ($states as $state)
-                                            <option value="{{ $state->id }}">{{ $state->name }}</option>
-                                        @endforeach
-                                    </select>
-                                    @error('city.state_idf')
-                                        <div class="invalid-feedback">{{ $message }}</div>
-                                    @enderror
-                                </div>
-                            </div>
-
-                            <div class="col-md-12">
-                                <div class="mb-3">
                                     <label class="form-label required" for="name">Country</label>
-                                    <select class="form-select" wire:model="city.country_id" id="country_id">
+                                    <select class="form-select" wire:model.live="city.country_id" id="country_id">
                                         <option value="">Select Country</option>
                                         @foreach ($countries as $country)
                                             <option value="{{ $country->id }}">{{ $country->name }}</option>
@@ -50,6 +35,20 @@
                                 </div>
                             </div>
 
+                            <div class="col-md-12">
+                                <div class="mb-3">
+                                    <label class="form-label required" for="name">State</label>
+                                    <select class="form-select" wire:model.live="city.state_id" id="state_id">
+                                        <option value="">Select Country</option>
+                                        @foreach ($states as $state)
+                                            <option value="{{ $state->id }}">{{ $state->name }}</option>
+                                        @endforeach
+                                    </select>
+                                    @error('city.state_idf')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                            </div>
 
                             <div class="col-md-6">
                                 <div class="mb-3">
