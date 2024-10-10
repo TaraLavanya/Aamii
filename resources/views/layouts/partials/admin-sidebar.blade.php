@@ -69,9 +69,8 @@
                         </a>
                     </li>
 
-
                     <li class="dropdown active">
-                        <a class="nav-link dropdown-toggle " href="#navbar-help" data-bs-toggle="dropdown"
+                        <a class="nav-link dropdown-toggle" href="#navbar-help" data-bs-toggle="dropdown"
                             data-bs-auto-close="outside" role="button" aria-expanded="true">
                             <span class="nav-link-icon d-md-none d-lg-inline-block">
                                 @include('icons.settings')
@@ -85,7 +84,8 @@
                             <div class="dropdown-menu-columns">
                                 <div class="dropdown-menu-column">
 
-                                    <a class="dropdown-item " href="{{ route('employees.index') }}">
+                                    <!-- Employees Link -->
+                                    <a class="dropdown-item" href="{{ route('employees.index') }}">
                                         <span class="nav-link-icon d-md-none d-lg-inline-block">
                                             @include('icons.user')
                                         </span>
@@ -94,37 +94,91 @@
                                         </span>
                                     </a>
 
-                                    <a class="dropdown-item " href={{ route('country') }}>
-                                        <span class="nav-link-icon d-md-none d-lg-inline-block">
-                                            @include('icons.category')
-                                        </span>
-                                        <span class="nav-link-title">
-                                            Country
-                                        </span>
-                                    </a>
+                                    <div class="dropdown">
+                                        <a class="dropdown-item dropdown-toggle" href="#"
+                                            data-bs-toggle="dropdown" role="button" aria-expanded="false">
+                                            <span class="nav-link-icon d-md-none d-lg-inline-block">
+                                                @include('icons.map-pin')
+                                            </span>
+                                            <span class="nav-link-title">
+                                                Location
+                                            </span>
+                                        </a>
+                                        <div class="dropdown-menu">
+                                            <a class="dropdown-item" href={{ route('country') }}>
+                                                <span class="nav-link-icon d-md-none d-lg-inline-block">
+                                                    @include('icons.globe')
+                                                </span>
+                                                <span class="nav-link-title">
+                                                    Country
+                                                </span>
+                                            </a>
 
-                                    <a class="dropdown-item" href={{ route('state') }}>
-                                        <span class="nav-link-icon d-md-none d-lg-inline-block">
-                                            @include('icons.speakerphone')
-                                        </span>
-                                        <span class="nav-link-title">
-                                            State
-                                        </span>
-                                    </a>
+                                            <a class="dropdown-item" href={{ route('state') }}>
+                                                <span class="nav-link-icon d-md-none d-lg-inline-block">
+                                                    @include('icons.map-pin-doller')
+                                                </span>
+                                                <span class="nav-link-title">
+                                                    State
+                                                </span>
+                                            </a>
 
-                                    <a class="dropdown-item " href={{ route('city') }}>
-                                        <span class="nav-link-icon d-md-none d-lg-inline-block">
-                                            @include('icons.basket-filled')
-                                        </span>
-                                        <span class="nav-link-title">
-                                            City
-                                        </span>
-                                    </a>
+                                            <a class="dropdown-item" href={{ route('city') }}>
+                                                <span class="nav-link-icon d-md-none d-lg-inline-block">
+                                                    @include('icons.map-pin-pin')
+                                                </span>
+                                                <span class="nav-link-title">
+                                                    City
+                                                </span>
+                                            </a>
+                                        </div>
+                                    </div>
+
+                                    <div class="dropdown">
+                                        <a class="dropdown-item dropdown-toggle" href="#"
+                                            data-bs-toggle="dropdown" role="button" aria-expanded="false">
+                                            <span class="nav-link-icon d-md-none d-lg-inline-block">
+                                                @include('icons.category')
+                                            </span>
+                                            <span class="nav-link-title">
+                                                Category
+                                            </span>
+                                        </a>
+                                        <div class="dropdown-menu">
+                                            <a class="dropdown-item" href={{ route('country') }}>
+                                                <span class="nav-link-icon d-md-none d-lg-inline-block">
+                                                    @include('icons.previous-squre-filled')
+                                                </span>
+                                                <span class="nav-link-title">
+                                                    Main Category
+                                                </span>
+                                            </a>
+
+                                            <a class="dropdown-item" href={{ route('state') }}>
+                                                <span class="nav-link-icon d-md-none d-lg-inline-block">
+                                                    @include('icons.map-pin-doller')
+                                                </span>
+                                                <span class="nav-link-title">
+                                                    Sub Category
+                                                </span>
+                                            </a>
+
+                                            <a class="dropdown-item" href={{ route('city') }}>
+                                                <span class="nav-link-icon d-md-none d-lg-inline-block">
+                                                    @include('icons.map-pin-pin')
+                                                </span>
+                                                <span class="nav-link-title">
+                                                    Child Category
+                                                </span>
+                                            </a>
+                                        </div>
+                                    </div>
 
                                 </div>
                             </div>
                         </div>
                     </li>
+
 
                 </ul>
             </div>
