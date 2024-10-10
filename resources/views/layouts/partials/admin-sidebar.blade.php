@@ -145,7 +145,7 @@
                                             </span>
                                         </a>
                                         <div class="dropdown-menu">
-                                            <a class="dropdown-item" href={{ route('country') }}>
+                                            <a class="dropdown-item" href={{ route('category') }}>
                                                 <span class="nav-link-icon d-md-none d-lg-inline-block">
                                                     @include('icons.previous-squre-filled')
                                                 </span>

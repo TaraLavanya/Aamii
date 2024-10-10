@@ -93,6 +93,6 @@ class CategoryHandler extends Component
 
     public function render()
     {
-        return view('livewire.category-handler');
+        return view('livewire.category-handler')->layout('layouts.admin');
     }
 }

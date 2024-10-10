@@ -46,6 +46,6 @@ class CategorySummary extends Component
 
     public function render()
     {
-        return view('livewire.category-summary');
+        return view('livewire.category-summary')->layout('layouts.admin');
     }
 }

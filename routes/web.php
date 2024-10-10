@@ -2,6 +2,7 @@
 
 
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Livewire\CategorySummary;
 use App\Http\Livewire\CitySummary;
 use App\Http\Livewire\CountrySummary;
 use App\Http\Livewire\Dashboard\Admin;
@@ -41,6 +42,7 @@ Route::middleware([
     Route::get('/dashboard', Admin::class)->name('dashboard');
     Route::get('/settings/user-profile', UserProfileSettings::class)->name('user.profile');
     Route::get('/settings/employees', EmployeeSummary::class)->name('employees.index');
+    Route::get('/category', CategorySummary::class)->name('category');
 });
 
 Route::get('cls', function () {
