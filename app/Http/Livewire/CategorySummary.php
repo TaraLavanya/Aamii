@@ -46,6 +46,9 @@ class CategorySummary extends Component
 
     public function render()
     {
-        return view('livewire.category-summary')->layout('layouts.admin');
+        $categories = Category::orderBy('name')->paginate($this->perPage);
+        return view('livewire.category-summary', [
+            "categories" => $categories,
+        ])->layout('layouts.admin');
     }
 }
