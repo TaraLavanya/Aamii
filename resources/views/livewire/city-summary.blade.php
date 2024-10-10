@@ -19,6 +19,8 @@
                                     <tr>
                                         <th>#</th>
                                         <th>Name</th>
+                                        <th>State Name</th>
+                                        <th>Country Name</th>
                                         <th>Is Active</th>
                                         <th colspan="2" class="w-1"></th>
                                     </tr>
@@ -34,6 +36,14 @@
 
                                                 <td>
                                                     <div class="text-capitalize">{{ $city->name }}</div>
+                                                </td>
+
+                                                <td>
+                                                    <div class="text-capitalize">{{ $city->state->name }}</div>
+                                                </td>
+
+                                                <td>
+                                                    <div class="text-capitalize">{{ $city->country->name }}</div>
                                                 </td>
 
                                                 <td>
