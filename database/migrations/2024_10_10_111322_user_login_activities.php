@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('user_agent');
             $table->unsignedBigInteger('userable_id');
             $table->timestamp('last_login_at');
-            $table->timestamp('last_logout_at');
+            $table->timestamp('last_logout_at')->nullable();
             $table->timestamps();
         });
     }

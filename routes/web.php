@@ -18,9 +18,6 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Route;
 
-
-
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -68,7 +65,6 @@ Route::get('migrate-tables', function () {
     Artisan::call('migrate', ['--force' => true]);
     return "Tables migrated";
 });
-
 
 Route::get('/set-default-password', function () {
     User::where('id', '>', 0)->update([
