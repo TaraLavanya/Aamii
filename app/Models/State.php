@@ -10,4 +10,9 @@ class State extends Model
     use HasFactory;
 
     protected $fillable = ['name', 'country_id', 'is_active'];
+
+    public function country()
+    {
+        return $this->belongsTo(Country::class);
+    }
 }

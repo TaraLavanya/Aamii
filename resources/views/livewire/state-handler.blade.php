@@ -26,7 +26,7 @@
                                     <select class="form-select" wire:model="state.country_id" id="country_id">
                                         <option value="">Select Country</option>
                                         @foreach ($countries as $country)
-                                            <option value="{{ country->id }}">{{ country->name }}</option>
+                                            <option value="{{ $country->id }}">{{ $country->name }}</option>
                                         @endforeach
                                     </select>
                                     @error('city.country_id')

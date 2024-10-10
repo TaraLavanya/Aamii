@@ -80,6 +80,7 @@ class CountryHandler extends Component
             $country = Country::find($countryId);
             if ($country) {
                 $this->country = $country->toArray();
+                $this->country['is_active'] = $this->country['is_active'] === 1;
             } else {
                 return redirect()->back()->with('warning', 'Country  not found');
             }
