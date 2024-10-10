@@ -39,11 +39,13 @@
                                                 </td>
 
                                                 <td>
-                                                    <div class="text-capitalize">{{ $city->state->name }}</div>
+                                                    <div class="text-capitalize">{{ $city?->state?->name ?? '--' }}
+                                                    </div>
                                                 </td>
 
                                                 <td>
-                                                    <div class="text-capitalize">{{ $city->country->name }}</div>
+                                                    <div class="text-capitalize">{{ $city?->country?->name ?? '--' }}
+                                                    </div>
                                                 </td>
 
                                                 <td>

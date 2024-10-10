@@ -38,7 +38,8 @@
                                                 </td>
 
                                                 <td>
-                                                    <div class="text-capitalize">{{ $state->country->name }}</div>
+                                                    <div class="text-capitalize">{{ $state?->country?->name ?? '--' }}
+                                                    </div>
                                                 </td>
 
                                                 <td>
