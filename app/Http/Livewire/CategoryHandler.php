@@ -48,7 +48,7 @@ class CategoryHandler extends Component
         $categoryExists = Category::where('name', $this->category['name'])
             ->exists();
         if ($categoryExists) {
-            session()->flash('error', 'category already exists');
+            $this->addError('category.name', 'Name already exists');
             return;
         }
         try {
@@ -72,7 +72,7 @@ class CategoryHandler extends Component
         $categoryExists = Category::where('id', '!=', $this->categoryId)
             ->where('name', $this->category['name'])->exists();
         if ($categoryExists) {
-            session()->flash('error', 'category already exists');
+            $this->addError('category.name', 'Name already exists');
             return;
         }
         try {

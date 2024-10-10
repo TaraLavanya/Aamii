@@ -154,7 +154,7 @@
                                                 </span>
                                             </a>
 
-                                            <a class="dropdown-item" href={{ route('state') }}>
+                                            <a class="dropdown-item" href={{ route('sub-category') }}>
                                                 <span class="nav-link-icon d-md-none d-lg-inline-block">
                                                     @include('icons.map-pin-doller')
                                                 </span>

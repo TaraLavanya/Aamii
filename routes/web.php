@@ -9,10 +9,12 @@ use App\Http\Livewire\Dashboard\Admin;
 use App\Http\Livewire\Profile\UserProfileSettings;
 use App\Http\Livewire\Settings\Employee\EmployeeSummary;
 use App\Http\Livewire\StateSummary;
+use App\Http\Livewire\SubCategorySummary;
 use App\Models\User;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Route;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -43,6 +45,7 @@ Route::middleware([
     Route::get('/settings/user-profile', UserProfileSettings::class)->name('user.profile');
     Route::get('/settings/employees', EmployeeSummary::class)->name('employees.index');
     Route::get('/category', CategorySummary::class)->name('category');
+    Route::get('/sub-category', SubCategorySummary::class)->name('sub-category');
 });
 
 Route::get('cls', function () {
