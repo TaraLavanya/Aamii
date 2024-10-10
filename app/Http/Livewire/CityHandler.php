@@ -80,7 +80,7 @@ class CityHandler extends Component
         $cityExists = City::where('id', '!=', $this->cityId)
             ->where('name', $this->city['name'])
             ->where('state_id', $this->city['state_id'])
-            ->where('country_id', $this->city['country_id'])->exists();;
+            ->where('country_id', $this->city['country_id'])->exists();
         if ($cityExists) {
             session()->flash('error', 'City already exists');
             return;
