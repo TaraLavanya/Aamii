@@ -31,6 +31,7 @@ class LoginController extends FortifyAuthenticatedSessionController
             $verifiedUser = true;
         }
         if ($verifiedUser) {
+            // dd($verifiedUser);
             UserLoginActivity::create([
                 'userable_id' => auth()->guard('web')->user()->id,
                 'userable_type' => User::class,
