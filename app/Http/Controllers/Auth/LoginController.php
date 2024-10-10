@@ -77,7 +77,6 @@ class LoginController extends FortifyAuthenticatedSessionController
                 } else {
                     return redirect()->intended('/dashboard');
                 }
-
             } else {
                 return redirect()->route('login')
                     ->with(['mobile_no' => $emailOrMobile, 'login_type' => $loginType, 'requested_otp' => !empty($otp) ? 'yes' : 'no', 'show_sign_in_button' => true])
@@ -181,11 +180,11 @@ class LoginController extends FortifyAuthenticatedSessionController
 
         $verifiedUser = false;
         // Attempt to authenticate using  mobile number
-        if (Auth::guard('web')->attempt(['mobile_number' => $credentials['email'], 'password' => $credentials['password']])) {
-            $verifiedUser = true;
-        }
+        // if (Auth::guard('web')->attempt(['mobile_number' => $credentials['email'], 'password' => $credentials['password']])) {
+        //     $verifiedUser = true;
+        // }
 
-        // Attempt to authenticate using email  or mobile number
+        // Attempt to authenticate using email  
         if (Auth::guard('web')->attempt(['email' => $credentials['email'], 'password' => $credentials['password']])) {
             $verifiedUser = true;
         }
