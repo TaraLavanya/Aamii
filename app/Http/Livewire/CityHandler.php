@@ -103,7 +103,8 @@ class CityHandler extends Component
     public function render()
     {
         $countries = Country::orderBy('name')->get();
-        $states = State::orderBy('name')->get();
+        $states = State::where('country_id', $this->city['country_id'])->orderBy('name')->get();
+        // dump($this->city['country_id']);
         return view('livewire.city-handler', [
             'countries' => $countries,
             'states' => $states,
