@@ -31,6 +31,8 @@ class User extends Authenticatable implements AuthenticatableContract
         'is_active',
         'user_id',
         'profile_photo_path',
+        'created_by',
+        'updated_by',
     ];
 
     /**

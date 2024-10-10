@@ -17,13 +17,13 @@
                     <div class="row row-cards">
                         <div class="col-md-12">
                             <div class="mb-1">
-                                <label class="form-label required">Emp.No.</label>
+                                <label class="form-label required">User ID</label>
                                 <input type="text" @class([
                                     'form-control',
-                                    'is-invalid' => $errors->has('employee.emp_no') ? true : false,
+                                    'is-invalid' => $errors->has('employee.user_id') ? true : false,
                                 ]) placeholder="Enter employee no"
-                                    wire:model="employee.emp_no">
-                                @error('employee.emp_no')
+                                    wire:model="employee.user_id">
+                                @error('employee.user_id')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
                             </div>
@@ -52,20 +52,6 @@
                                 ])
                                     placeholder="Enter Email Address Employee " wire:model="employee.email">
                                 @error('employee.email')
-                                    <div class="invalid-feedback">{{ $message }}</div>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="col-md-12">
-                            <div class="mb-1">
-                                <label class="form-label required">Phone Number</label>
-                                <input type="text" @class([
-                                    'form-control',
-                                    'is-invalid' => $errors->has('employee.mobile_number') ? true : false,
-                                ])
-                                    placeholder="Enter employee Phone Number " wire:model="employee.mobile_number">
-                                @error('employee.mobile_number')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
                             </div>

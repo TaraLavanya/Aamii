@@ -36,11 +36,9 @@ class EmployeeSummary extends Component
         $password = Hash::make("password");
         $userData = User::where('id', $employeeId)->update(['password' => $password]);
         if ($userData) {
-            $this->dispatch('callShowNoticeEvent', 'success', 'Password Reset Successfully');
-            return;
+            return session()->flash('success', 'Password Reset Successfully');
         }
-        $this->dispatch('callShowNoticeEvent', 'error', 'Cannot Reset Password');
-        return;
+        return session()->flash('error', 'Cannot Reset Password');
     }
 
     public function render()
