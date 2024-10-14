@@ -27,7 +27,7 @@ class ChildCategoryHandler extends Component
     ];
 
     protected $messages = [
-        'childCategory.name.required' => 'This Field is Required',
+        'childCategory.name.required' => 'Name Field is Required',
         'childCategory.category_id.required' => 'This Field is Required',
         'childCategory.subcategory_id.required' => 'This Field is Required',
     ];
@@ -40,7 +40,7 @@ class ChildCategoryHandler extends Component
                 $this->childCategory = $childCategory->toArray();
                 $this->childCategory['is_active'] = $this->childCategory['is_active'] === 1;
             } else {
-                return redirect()->back()->with('warning', 'childCategory  not found');
+                return redirect()->back()->with('warning', 'child category  not found');
             }
         }
     }
@@ -52,6 +52,8 @@ class ChildCategoryHandler extends Component
 
     public function create()
     {
+        // dd(empty($this->childCategory['category_id']), $this->childCategory['category_id'] == null);
+
         $this->validate();
         $childCategoryExists = ChildCategory::where('name', $this->childCategory['name'])
             ->where('category_id', $this->childCategory['category_id'])

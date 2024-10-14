@@ -16,15 +16,18 @@
                                     ]) placeholder="Name"
                                         wire:model="childCategory.name">
                                     @error('childCategory.name')
-                                        <div class="invalid-feedback">{{ $message }}</div>
+                                        <span class="invalid-feedback">{{ $message }}</span>
                                     @enderror
                                 </div>
                             </div>
-
+                            {{-- @json($errors->all()) --}}
                             <div class="col-md-12">
                                 <div class="mb-3">
                                     <label class="form-label required" for="name">Category</label>
-                                    <select class="form-select" wire:model.live="childCategory.category_id"
+                                    <select @class([
+                                        'form-select',
+                                        'is-invalid' => $errors->has('childCategory.category_id') ? true : false,
+                                    ]) wire:model.live="childCategory.category_id"
                                         id="category_id">
                                         <option value="">Select Catagory</option>
                                         @foreach ($categories as $category)
@@ -32,14 +35,17 @@
                                         @endforeach
                                     </select>
                                     @error('childCategory.category_id')
-                                        <div class="invalid-feedback">{{ $message }}</div>
+                                        <span class="invalid-feedback">{{ $message }}</span>
                                     @enderror
                                 </div>
                             </div>
                             <div class="col-md-12">
                                 <div class="mb-3">
                                     <label class="form-label required" for="subcategory_id"> Sub Category</label>
-                                    <select class="form-select" wire:model="childCategory.subcategory_id"
+                                    <select @class([
+                                        'form-select',
+                                        'is-invalid' => $errors->has('childCategory.subcategory_id') ? true : false,
+                                    ]) wire:model="childCategory.subcategory_id"
                                         id="subcategory_id">
                                         <option value="">Select Sub Catagory</option>
                                         @foreach ($subCategories as $subCategory)
@@ -47,7 +53,7 @@
                                         @endforeach
                                     </select>
                                     @error('childCategory.subcategory_id')
-                                        <div class="invalid-feedback">{{ $message }}</div>
+                                        <span class="invalid-feedback">{{ $message }}</span>
                                     @enderror
                                 </div>
                             </div>
