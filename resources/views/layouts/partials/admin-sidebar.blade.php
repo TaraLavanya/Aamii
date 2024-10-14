@@ -187,6 +187,41 @@
                                         </div>
                                     </div>
 
+                                    <div class="dropdown">
+                                        <a class="dropdown-item dropdown-toggle" href="#"
+                                            data-bs-toggle="dropdown" role="button"
+                                            aria-expanded=" {{ $isCategoryActive }}">
+                                            <span class="nav-link-icon d-md-none d-lg-inline-block">
+                                                @include('icons.basket-filled')
+                                            </span>
+                                            <span class="nav-link-title">
+                                                Products
+                                            </span>
+                                        </a>
+                                        <div class="dropdown-menu {{ $isCategoryActive ? 'show' : '' }}">
+                                            <a class="dropdown-item {{ $currentRouteName == 'category' ? 'active' : '' }}"
+                                                href={{ route('category') }}>
+                                                <span class="nav-link-icon d-md-none d-lg-inline-block">
+                                                    @include('icons.stars')
+                                                </span>
+                                                <span class="nav-link-title">
+                                                    Product
+                                                </span>
+                                            </a>
+
+                                            <a class="dropdown-item {{ $currentRouteName == 'sub-category' ? 'active' : '' }}"
+                                                href={{ route('sub-category') }}>
+                                                <span class="nav-link-icon d-md-none d-lg-inline-block">
+                                                    @include('icons.summary')
+                                                </span>
+                                                <span class="nav-link-title">
+                                                    Product Summary
+                                                </span>
+                                            </a>
+
+                                        </div>
+                                    </div>
+
                                 </div>
                             </div>
                         </div>
