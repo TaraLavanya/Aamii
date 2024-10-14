@@ -1,3 +1,8 @@
+@php
+    $currentRouteName = Route::currentRouteName();
+    $isCategoryActive = in_array($currentRouteName, ['category', 'sub-category', 'child-category']);
+    $isLocationActive = in_array($currentRouteName, ['country', 'state', 'city']);
+@endphp
 <aside class="navbar navbar-vertical navbar-expand-lg navbar-dark border-end border-5 ">
     <div class="container-fluid">
 
@@ -69,9 +74,8 @@
                         </a>
                     </li>
 
-
                     <li class="dropdown active">
-                        <a class="nav-link dropdown-toggle " href="#navbar-help" data-bs-toggle="dropdown"
+                        <a class="nav-link dropdown-toggle" href="#navbar-help" data-bs-toggle="dropdown"
                             data-bs-auto-close="outside" role="button" aria-expanded="true">
                             <span class="nav-link-icon d-md-none d-lg-inline-block">
                                 @include('icons.settings')
@@ -85,7 +89,8 @@
                             <div class="dropdown-menu-columns">
                                 <div class="dropdown-menu-column">
 
-                                    <a class="dropdown-item " href="{{ route('employees.index') }}">
+                                    <!-- Employees Link -->
+                                    <a class="dropdown-item" href="{{ route('employees.index') }}">
                                         <span class="nav-link-icon d-md-none d-lg-inline-block">
                                             @include('icons.user')
                                         </span>
@@ -94,37 +99,99 @@
                                         </span>
                                     </a>
 
-                                    <a class="dropdown-item " href={{ route('country') }}>
-                                        <span class="nav-link-icon d-md-none d-lg-inline-block">
-                                            @include('icons.category')
-                                        </span>
-                                        <span class="nav-link-title">
-                                            Country
-                                        </span>
-                                    </a>
+                                    <div class="dropdown">
+                                        <a class="dropdown-item dropdown-toggle " href="#"
+                                            data-bs-toggle="dropdown" role="button"
+                                            aria-expanded="{{ $isLocationActive }}">
+                                            <span class="nav-link-icon d-md-none d-lg-inline-block">
+                                                @include('icons.map-pin')
+                                            </span>
+                                            <span class="nav-link-title">
+                                                Location
+                                            </span>
+                                        </a>
+                                        <div class="dropdown-menu {{ $isLocationActive ? 'show' : '' }}">
+                                            <a class="dropdown-item {{ $currentRouteName == 'country' ? 'active' : '' }}"
+                                                href={{ route('country') }}>
+                                                <span class="nav-link-icon d-md-none d-lg-inline-block">
+                                                    @include('icons.globe')
+                                                </span>
+                                                <span class="nav-link-title">
+                                                    Country
+                                                </span>
+                                            </a>
 
-                                    <a class="dropdown-item" href={{ route('state') }}>
-                                        <span class="nav-link-icon d-md-none d-lg-inline-block">
-                                            @include('icons.speakerphone')
-                                        </span>
-                                        <span class="nav-link-title">
-                                            State
-                                        </span>
-                                    </a>
+                                            <a class="dropdown-item  {{ $currentRouteName == 'state' ? 'active' : '' }}"
+                                                href={{ route('state') }}>
+                                                <span class="nav-link-icon d-md-none d-lg-inline-block">
+                                                    @include('icons.map-pin-doller')
+                                                </span>
+                                                <span class="nav-link-title">
+                                                    State
+                                                </span>
+                                            </a>
 
-                                    <a class="dropdown-item " href={{ route('city') }}>
-                                        <span class="nav-link-icon d-md-none d-lg-inline-block">
-                                            @include('icons.basket-filled')
-                                        </span>
-                                        <span class="nav-link-title">
-                                            City
-                                        </span>
-                                    </a>
+                                            <a class="dropdown-item  {{ $currentRouteName == 'city' ? 'active' : '' }}"
+                                                href={{ route('city') }}>
+                                                <span class="nav-link-icon d-md-none d-lg-inline-block">
+                                                    @include('icons.map-pin-pin')
+                                                </span>
+                                                <span class="nav-link-title">
+                                                    City
+                                                </span>
+                                            </a>
+                                        </div>
+                                    </div>
+
+                                    <div class="dropdown">
+                                        <a class="dropdown-item dropdown-toggle" href="#"
+                                            data-bs-toggle="dropdown" role="button"
+                                            aria-expanded=" {{ $isCategoryActive }}">
+                                            <span class="nav-link-icon d-md-none d-lg-inline-block">
+                                                @include('icons.category')
+                                            </span>
+                                            <span class="nav-link-title">
+                                                Category
+                                            </span>
+                                        </a>
+                                        <div class="dropdown-menu {{ $isCategoryActive ? 'show' : '' }}">
+                                            <a class="dropdown-item {{ $currentRouteName == 'category' ? 'active' : '' }}"
+                                                href={{ route('category') }}>
+                                                <span class="nav-link-icon d-md-none d-lg-inline-block">
+                                                    @include('icons.previous-squre-filled')
+                                                </span>
+                                                <span class="nav-link-title">
+                                                    Main Category
+                                                </span>
+                                            </a>
+
+                                            <a class="dropdown-item {{ $currentRouteName == 'sub-category' ? 'active' : '' }}"
+                                                href={{ route('sub-category') }}>
+                                                <span class="nav-link-icon d-md-none d-lg-inline-block">
+                                                    @include('icons.map-pin-doller')
+                                                </span>
+                                                <span class="nav-link-title">
+                                                    Sub Category
+                                                </span>
+                                            </a>
+
+                                            <a class="dropdown-item {{ $currentRouteName == 'child-category' ? 'active' : '' }}"
+                                                href={{ route('child-category') }}>
+                                                <span class="nav-link-icon d-md-none d-lg-inline-block">
+                                                    @include('icons.map-pin-pin')
+                                                </span>
+                                                <span class="nav-link-title">
+                                                    Child Category
+                                                </span>
+                                            </a>
+                                        </div>
+                                    </div>
 
                                 </div>
                             </div>
                         </div>
                     </li>
+
 
                 </ul>
             </div>

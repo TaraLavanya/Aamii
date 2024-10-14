@@ -2,16 +2,21 @@
 
 
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Livewire\CategorySummary;
+use App\Http\Livewire\ChildCategorySummary;
 use App\Http\Livewire\CitySummary;
 use App\Http\Livewire\CountrySummary;
 use App\Http\Livewire\Dashboard\Admin;
 use App\Http\Livewire\Profile\UserProfileSettings;
 use App\Http\Livewire\Settings\Employee\EmployeeSummary;
 use App\Http\Livewire\StateSummary;
+use App\Http\Livewire\SubCategorySummary;
 use App\Models\User;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Route;
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -41,6 +46,9 @@ Route::middleware([
     Route::get('/dashboard', Admin::class)->name('dashboard');
     Route::get('/settings/user-profile', UserProfileSettings::class)->name('user.profile');
     Route::get('/settings/employees', EmployeeSummary::class)->name('employees.index');
+    Route::get('/category', CategorySummary::class)->name('category');
+    Route::get('/sub-category', SubCategorySummary::class)->name('sub-category');
+    Route::get('/child-category', ChildCategorySummary::class)->name('child-category');
 });
 
 Route::get('cls', function () {
