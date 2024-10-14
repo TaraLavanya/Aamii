@@ -9,7 +9,7 @@
                 <div class="col-lg-8 ">
                     <div class="d-flex flex-row justify-content-between align-items-center">
                         <div>
-                            <h4 class="text">List all sub Sub Categories</h4>
+                            <h4 class="text">List all sub Categories</h4>
                         </div>
                     </div>
                     <div class="card">

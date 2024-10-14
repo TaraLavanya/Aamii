@@ -1,5 +1,5 @@
 <div>
-    <h4>{{ isset($subCategoryId) ? 'Edit category' : 'New category' }}</h4>
+    <h4>{{ isset($subCategoryId) ? 'Edit sub category' : 'New sub category' }}</h4>
     <div class="card">
         <form wire:submit={{ isset($subCategoryId) ? 'update' : 'create' }}>
             <div class="card-body">
