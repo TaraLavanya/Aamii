@@ -2,6 +2,7 @@
     $currentRouteName = Route::currentRouteName();
     $isCategoryActive = in_array($currentRouteName, ['category', 'sub-category', 'child-category']);
     $isLocationActive = in_array($currentRouteName, ['country', 'state', 'city']);
+    $isProductActive = in_array($currentRouteName, ['create.product', 'show.product']);
 @endphp
 <aside class="navbar navbar-vertical navbar-expand-lg navbar-dark border-end border-5 ">
     <div class="container-fluid">
@@ -190,7 +191,7 @@
                                     <div class="dropdown">
                                         <a class="dropdown-item dropdown-toggle" href="#"
                                             data-bs-toggle="dropdown" role="button"
-                                            aria-expanded=" {{ $isCategoryActive }}">
+                                            aria-expanded=" {{ $isProductActive }}">
                                             <span class="nav-link-icon d-md-none d-lg-inline-block">
                                                 @include('icons.basket-filled')
                                             </span>
@@ -198,9 +199,9 @@
                                                 Products
                                             </span>
                                         </a>
-                                        <div class="dropdown-menu {{ $isCategoryActive ? 'show' : '' }}">
-                                            <a class="dropdown-item {{ $currentRouteName == 'category' ? 'active' : '' }}"
-                                                href={{ route('category') }}>
+                                        <div class="dropdown-menu {{ $isProductActive ? 'show' : '' }}">
+                                            <a class="dropdown-item {{ $currentRouteName == 'create.product' ? 'active' : '' }}"
+                                                href={{ route('create.product') }}>
                                                 <span class="nav-link-icon d-md-none d-lg-inline-block">
                                                     @include('icons.stars')
                                                 </span>
@@ -209,8 +210,8 @@
                                                 </span>
                                             </a>
 
-                                            <a class="dropdown-item {{ $currentRouteName == 'sub-category' ? 'active' : '' }}"
-                                                href={{ route('sub-category') }}>
+                                            <a class="dropdown-item {{ $currentRouteName == 'show.product' ? 'active' : '' }}"
+                                                href={{ route('show.product') }}>
                                                 <span class="nav-link-icon d-md-none d-lg-inline-block">
                                                     @include('icons.summary')
                                                 </span>

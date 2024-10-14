@@ -7,6 +7,8 @@ use App\Http\Livewire\ChildCategorySummary;
 use App\Http\Livewire\CitySummary;
 use App\Http\Livewire\CountrySummary;
 use App\Http\Livewire\Dashboard\Admin;
+use App\Http\Livewire\ProductHandler;
+use App\Http\Livewire\ProductSummary;
 use App\Http\Livewire\Profile\UserProfileSettings;
 use App\Http\Livewire\Settings\Employee\EmployeeSummary;
 use App\Http\Livewire\StateSummary;
@@ -49,6 +51,8 @@ Route::middleware([
     Route::get('/category', CategorySummary::class)->name('category');
     Route::get('/sub-category', SubCategorySummary::class)->name('sub-category');
     Route::get('/child-category', ChildCategorySummary::class)->name('child-category');
+    Route::get('/create-product', ProductHandler::class)->name('create.product');
+    Route::get('/view-products', ProductSummary::class)->name('show.product');
 });
 
 Route::get('cls', function () {
